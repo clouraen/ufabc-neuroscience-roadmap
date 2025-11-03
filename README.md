@@ -110,7 +110,7 @@ date: {{date}}
 
 ## Project
 **Topic:** Neural data representation using open atlases  
-**Repo:** [Cleiton Moura Loura's abagen-fork](https://github.com/DarkHuggy/abagen-fork)
+**Repo:** [Cleiton Moura Loura's abagen-fork](https://github.com/clouraen/abagen)
 
 ## Notes
 - Learned about **Allen Brain Atlas** and **gene expression maps**
@@ -179,7 +179,7 @@ mkdocs gh-deploy
 | Graph of study hours | Python + Matplotlib |
 | Comments | giscus.app |
 | RSS Feed | MkDocs Blog plugin |
-| Custom Domain | `darkhuggy.dev/neuroblog` |
+| Custom Domain | `clouraen.dev/neuroblog` |
 | Notion Sync | Notion API + Python script |
 
 ---
@@ -203,7 +203,7 @@ mkdocs gh-deploy
 
 ## 🧩 Connect
 - **GitHub:** [Cleiton Moura Loura's GitHub](https://github.com/DarkHuggy)  
-- **NeuroBlog:** [darkhuggy.github.io/ufabc-neuroscience-roadmap](https://darkhuggy.github.io/ufabc-neuroscience-roadmap)
+- **NeuroBlog:** [clouraen.github.io/ufabc-neuroscience-roadmap](https://clouraen.github.io/ufabc-neuroscience-roadmap)
 
 ---
 
