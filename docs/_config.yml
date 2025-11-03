@@ -2,7 +2,7 @@ title: "Cleiton Moura Loura NeuroBlog"
 description: "My journey from ENEM preparation to computational neuroscience research at UFABC"
 theme: jekyll-theme-cayman
 markdown: kramdown
-baseurl: ""
+baseurl: "/ufabc-neuroscience-roadmap"
 url: "https://clouraen.github.io"
 
 # Multi-language support
