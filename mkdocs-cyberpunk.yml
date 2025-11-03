@@ -10,7 +10,7 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  custom_dir: docs/overrides
+  # custom_dir: docs/overrides  # Commented out - directory doesn't exist yet
   language: en
   
   # Cyberpunk Color Palette
