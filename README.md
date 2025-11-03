@@ -220,62 +220,116 @@ You can now:
 
 This repository supports **all 243+ languages** from Google Translate! 🎉
 
+### 🚀 Quick Start: Translate Portuguese to All Languages
+
+#### Step 1: Set API Key
+```bash
+export OPENAI_API_KEY='sk-your-api-key-here'
+```
+
+#### Step 2: Run Translation
+```bash
+# Translate to popular languages (English, Spanish, French, German, etc.)
+./scripts/batch-translate.sh --popular
+
+# Or translate to specific languages
+./scripts/batch-translate.sh --languages en,es,fr,de,it
+
+# Or translate to ALL 158+ enabled languages
+./scripts/batch-translate.sh
+```
+
+**📖 See [`QUICK_START.md`](./QUICK_START.md) and [`TRANSLATION_GUIDE.md`](./TRANSLATION_GUIDE.md) for complete documentation.**
+
 ### Current Status
 - **158+ languages defined** in `languages.json`
-- **Currently enabled:** Portuguese (pt) and English (en)
-- **Expandable to:** All 243+ Google Translate languages
-- **Language switcher:** Dynamic dropdown with "View All" option
+- **Source content:** Portuguese (pt) - 15 markdown files
+- **Target languages:** All enabled languages (customizable)
+- **Translation engine:** OpenAI API (gpt-4o-mini)
 
-### Quick Enable All Languages
+### What Gets Translated
+
+All Portuguese content in `docs/pt/`:
+- ✅ Homepage and navigation
+- ✅ Blog posts (4 files)
+- ✅ ENEM 2026 study logs (3 files)
+- ✅ Neuroscience learning notes (4 files)
+- ✅ Templates (3 files)
+
+**Total: 15 files → 158+ languages = 2,370+ translations**
+
+### Translation Options
+
+| Strategy | Languages | API Calls | Est. Cost |
+|----------|-----------|-----------|----------|
+| Popular only | 10 | ~150 | $0.50-$1 |
+| Top 5 | 5 | ~75 | $0.25-$0.50 |
+| All enabled | 158+ | ~2,370 | $5-$10 |
+
+### Language Features
+- ✅ Automatic translation with OpenAI API
+- ✅ Progress tracking and resume capability
+- ✅ Preserves markdown formatting and links
+- ✅ Updates frontmatter metadata automatically
+- ✅ RTL (Right-to-Left) support for Arabic, Hebrew, etc.
+- ✅ Dynamic language switcher on every page
+- ✅ Browser language detection
+
+### Quick Commands
+
 ```bash
-# Enable all 158+ languages at once
+# Preview what would be translated (no API calls)
+./scripts/batch-translate.sh --dry-run
+
+# Resume interrupted translation
+./scripts/batch-translate.sh --resume
+
+# Check progress
+cat progress.json
+```
+
+### Enable/Disable Languages
+
+```bash
+# Enable all languages at once
 python scripts/enable-all-languages.py
 
-# Generate folder structure for all enabled languages
+# Generate folder structure for enabled languages
 python scripts/generate-all-languages.py
 ```
 
-### Language Features
-- Dynamic dropdown language switcher on every page
-- Browser language detection with localStorage preference
-- Language selection page showing all available languages
-- RTL (Right-to-Left) support for Arabic, Hebrew, Urdu, etc.
-- Automatic URL routing with language prefixes
-
-### Adding Translations
-
-**Option 1: Automatic Translation (Recommended)**
-```bash
-# Set up API credentials
-export OPENAI_API_KEY='your-api-key'
-export OPENAI_BASE_URL='https://api.openai.com/v1'  # Optional
-export OPENAI_API_MODEL='gpt-4o-mini'  # Optional
-
-# Translate all content to all enabled languages
-python scripts/translate-content.py
-
-# Or translate to specific language
-python scripts/translate-content.py --lang es
+Edit `languages.json` to customize which languages are enabled:
+```json
+{
+  "languages": { ... },
+  "enabled": ["pt", "en", "es", "fr", "de", "it"]
+}
 ```
 
-**Option 2: Manual Translation**
+### Manual Translation Alternative
+
+If you prefer manual translation:
 ```bash
-# Generate English translation templates from Portuguese content
+# Generate translation templates
 python scripts/create-translation-template.py
 
-# Update language metadata in files
+# Update language metadata
 python scripts/update-lang-frontmatter.py pt docs/pt/
 python scripts/update-lang-frontmatter.py en docs/en/
 ```
 
-See `docs/TRANSLATION_API.md` for automatic translation setup.
-
 ### Supported Languages Include:
-🌍 **Major Languages:** English, Spanish, French, German, Italian, Portuguese  
+🌍 **Popular:** English, Spanish, French, German, Italian, Portuguese  
 🌏 **Asian:** Chinese, Japanese, Korean, Hindi, Thai, Vietnamese  
 🌍 **Middle Eastern:** Arabic, Hebrew, Persian, Urdu, Turkish  
 🌍 **African:** Swahili, Zulu, Xhosa, Amharic, Hausa  
 🌍 **Regional:** Catalan, Basque, Galician, Welsh, Irish  
-🌍 **And 150+ more languages!**
+🌍 **And 150+ more!**
 
-See `docs/MULTILANGUAGE.md` for complete documentation.
+### Documentation
+
+- **[QUICK_START.md](./QUICK_START.md)** - Fast translation guide
+- **[TRANSLATION_GUIDE.md](./TRANSLATION_GUIDE.md)** - Complete documentation
+- **[TRANSLATION_SETUP.md](./TRANSLATION_SETUP.md)** - Setup instructions
+- **[docs/MULTILANGUAGE.md](./docs/MULTILANGUAGE.md)** - Language system overview
+- **[docs/TRANSLATION_API.md](./docs/TRANSLATION_API.md)** - API configuration
