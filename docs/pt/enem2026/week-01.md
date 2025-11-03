@@ -1,7 +1,7 @@
 ---
 lang: pt
 title: "ENEM Week 01"
-date: 2024-01-01
+date: 2025-11-02
 tags: [enem, study, neuroscience, ufabc]
 ---
 
