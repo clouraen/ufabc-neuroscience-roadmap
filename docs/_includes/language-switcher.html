@@ -1,0 +1,87 @@
+<div class="language-switcher" style="text-align: right; margin: 10px 0; padding: 5px;">
+  {% assign current_lang = page.lang | default: 'pt' %}
+  
+  <select id="lang-switcher-select" onchange="switchLanguage(this.value)" 
+          style="padding: 5px 10px; font-size: 0.9em; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer;">
+    <option value="">Loading languages...</option>
+  </select>
+  
+  <script>
+    // Load languages from JSON and populate dropdown
+    fetch('/languages.json')
+      .then(response => response.json())
+      .then(data => {
+        const selector = document.getElementById('lang-switcher-select');
+        const currentLang = '{{ current_lang }}';
+        const allLangs = data.languages;
+        const enabled = data.enabled || Object.keys(allLangs);
+        
+        selector.innerHTML = '';
+        
+        // Show popular languages first (if enabled)
+        const popular = ['pt', 'en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'zh', 'ar', 'hi', 'ru'];
+        const shown = new Set();
+        
+        popular.forEach(code => {
+          if (enabled.includes(code) && allLangs[code] && !shown.has(code)) {
+            const lang = allLangs[code];
+            const option = document.createElement('option');
+            option.value = code;
+            option.textContent = lang.flag + ' ' + lang.native;
+            if (code === currentLang) option.selected = true;
+            selector.appendChild(option);
+            shown.add(code);
+          }
+        });
+        
+        // Add separator if there are more languages
+        if (enabled.length > shown.size) {
+          const separator = document.createElement('option');
+          separator.value = '';
+          separator.textContent = '──────────';
+          separator.disabled = true;
+          selector.appendChild(separator);
+        }
+        
+        // Add "View All" option
+        const viewAll = document.createElement('option');
+        viewAll.value = 'all';
+        viewAll.textContent = '🌐 View All ' + Object.keys(allLangs).length + ' Languages...';
+        selector.appendChild(viewAll);
+      })
+      .catch(err => {
+        console.error('Error loading languages:', err);
+        document.getElementById('lang-switcher-select').innerHTML = 
+          '<option value="pt">🇧🇷 Português</option>' +
+          '<option value="en">🇺🇸 English</option>';
+      });
+    
+    function switchLanguage(lang) {
+      if (!lang || lang === '') return;
+      
+      if (lang === 'all') {
+        window.location.href = '/languages/';
+        return;
+      }
+      
+      localStorage.setItem('preferred-language', lang);
+      
+      const currentPath = window.location.pathname;
+      let newPath;
+      
+      // Extract path after language code
+      const langMatch = currentPath.match(/\/([a-z-]+)\/(.*)/);
+      
+      if (langMatch && langMatch.length >= 3) {
+        // Replace language code
+        newPath = '/' + lang + '/' + langMatch[2];
+      } else {
+        // Add language prefix
+        newPath = '/' + lang + '/';
+      }
+      
+      window.location.href = newPath;
+    }
+  </script>
+</div>
+

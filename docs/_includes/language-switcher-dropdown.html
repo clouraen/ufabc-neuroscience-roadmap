@@ -1,0 +1,94 @@
+<div class="language-switcher-dropdown" style="position: relative; display: inline-block; float: right; margin: 10px 0;">
+  {% assign current_lang = page.lang | default: 'pt' %}
+  {% assign url_path = page.url | remove_first: '/' %}
+  
+  <select id="language-selector" onchange="switchLanguage(this.value)" 
+          style="padding: 5px 10px; font-size: 0.9em; border: 1px solid #ccc; border-radius: 4px; background: white; cursor: pointer;">
+    <option value="pt" {% if current_lang == 'pt' %}selected{% endif %}>🇧🇷 Português</option>
+    <option value="en" {% if current_lang == 'en' %}selected{% endif %}>🇺🇸 English</option>
+    <option value="es" {% if current_lang == 'es' %}selected{% endif %}>🇪🇸 Español</option>
+    <option value="fr" {% if current_lang == 'fr' %}selected{% endif %}>🇫🇷 Français</option>
+    <option value="de" {% if current_lang == 'de' %}selected{% endif %}>🇩🇪 Deutsch</option>
+    <option value="it" {% if current_lang == 'it' %}selected{% endif %}>🇮🇹 Italiano</option>
+    <option value="ja" {% if current_lang == 'ja' %}selected{% endif %}>🇯🇵 日本語</option>
+    <option value="ko" {% if current_lang == 'ko' %}selected{% endif %}>🇰🇷 한국어</option>
+    <option value="zh" {% if current_lang == 'zh' %}selected{% endif %}>🇨🇳 中文</option>
+    <option value="ar" {% if current_lang == 'ar' %}selected{% endif %}>🇸🇦 العربية</option>
+    <option value="hi" {% if current_lang == 'hi' %}selected{% endif %}>🇮🇳 हिन्दी</option>
+    <option value="ru" {% if current_lang == 'ru' %}selected{% endif %}>🇷🇺 Русский</option>
+    <option value="---">──────────</option>
+    <option value="all">🌐 View All Languages...</option>
+  </select>
+  
+  <script>
+    function switchLanguage(lang) {
+      if (lang === 'all' || lang === '---') {
+        window.location.href = '/languages/';
+        return;
+      }
+      
+      // Save preference
+      localStorage.setItem('preferred-language', lang);
+      
+      // Get current URL path
+      const currentPath = window.location.pathname;
+      let newPath;
+      
+      // Extract path after language code
+      const langMatch = currentPath.match(/\/(pt|en|es|fr|de|it|ja|ko|zh|ar|hi|ru|[\w-]+)\/(.*)/);
+      
+      if (langMatch) {
+        // Replace language code
+        newPath = '/' + lang + '/' + langMatch[2];
+      } else {
+        // Add language prefix
+        const pathWithoutLang = currentPath.replace(/^\/(pt|en|es|fr|de|it|ja|ko|zh|ar|hi|ru|[\w-]+)/, '');
+        newPath = '/' + lang + (pathWithoutLang === '/' ? '' : pathWithoutLang);
+      }
+      
+      window.location.href = newPath;
+    }
+    
+    // Load all languages dynamically from JSON (for full 243 languages)
+    fetch('/languages.json')
+      .then(response => response.json())
+      .then(data => {
+        const selector = document.getElementById('language-selector');
+        const currentLang = selector.value;
+        const allLangs = data.languages;
+        
+        // Clear existing options (except separator)
+        selector.innerHTML = '';
+        
+        // Add popular languages first
+        const popular = ['pt', 'en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'zh', 'ar', 'hi', 'ru'];
+        popular.forEach(code => {
+          if (allLangs[code]) {
+            const lang = allLangs[code];
+            const option = document.createElement('option');
+            option.value = code;
+            option.textContent = lang.flag + ' ' + lang.native;
+            if (code === currentLang) option.selected = true;
+            selector.appendChild(option);
+          }
+        });
+        
+        // Add separator
+        const separator = document.createElement('option');
+        separator.value = '---';
+        separator.textContent = '──────────';
+        separator.disabled = true;
+        selector.appendChild(separator);
+        
+        // Add "View All" option
+        const viewAll = document.createElement('option');
+        viewAll.value = 'all';
+        viewAll.textContent = '🌐 View All Languages...';
+        selector.appendChild(viewAll);
+      })
+      .catch(err => {
+        console.log('Could not load languages.json, using default options');
+      });
+  </script>
+</div>
+

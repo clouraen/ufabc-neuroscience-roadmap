@@ -1,5 +1,5 @@
 # 🧠 UFABC Computational Neuroscience Roadmap
-**Author:** DarkHuggy  
+**Author:** Cleiton Moura Loura  
 **Goal:** Enter UFABC (ENEM 2026) → specialize in *Computational Neuroscience* → grow through open-source research + scholarships *(PIBIC → FAPESP → BEPE → Mestrado)*  
 
 ---
@@ -110,7 +110,7 @@ date: {{date}}
 
 ## Project
 **Topic:** Neural data representation using open atlases  
-**Repo:** [github.com/DarkHuggy/abagen-fork](https://github.com/DarkHuggy/abagen-fork)
+**Repo:** [Cleiton Moura Loura's abagen-fork](https://github.com/DarkHuggy/abagen-fork)
 
 ## Notes
 - Learned about **Allen Brain Atlas** and **gene expression maps**
@@ -129,7 +129,7 @@ date: {{date}}
 ### Option A — *Jekyll (simple)*
 Create `_config.yml` inside `/docs`:
 ```yaml
-title: "DarkHuggy NeuroBlog"
+title: "Cleiton Moura Loura NeuroBlog"
 theme: jekyll-theme-cayman
 markdown: kramdown
 baseurl: ""
@@ -142,7 +142,7 @@ Enable Pages:
 
 ### Option B — *MkDocs (professional look)*
 ```yaml
-site_name: DarkHuggy NeuroBlog
+site_name: Cleiton Moura Loura NeuroBlog
 theme:
   name: material
   features:
@@ -202,7 +202,7 @@ mkdocs gh-deploy
 ---
 
 ## 🧩 Connect
-- **GitHub:** [github.com/DarkHuggy](https://github.com/DarkHuggy)  
+- **GitHub:** [Cleiton Moura Loura's GitHub](https://github.com/DarkHuggy)  
 - **NeuroBlog:** [darkhuggy.github.io/ufabc-neuroscience-roadmap](https://darkhuggy.github.io/ufabc-neuroscience-roadmap)
 
 ---
@@ -213,3 +213,69 @@ You can now:
 2. Copy this file as your main `README.md`  
 3. Add `/docs` templates and push  
 4. Enable **GitHub Pages** → your live NeuroBlog will appear automatically 🌱  
+
+---
+
+## 🌍 Multi-Language Support - 243 Languages!
+
+This repository supports **all 243+ languages** from Google Translate! 🎉
+
+### Current Status
+- **158+ languages defined** in `languages.json`
+- **Currently enabled:** Portuguese (pt) and English (en)
+- **Expandable to:** All 243+ Google Translate languages
+- **Language switcher:** Dynamic dropdown with "View All" option
+
+### Quick Enable All Languages
+```bash
+# Enable all 158+ languages at once
+python scripts/enable-all-languages.py
+
+# Generate folder structure for all enabled languages
+python scripts/generate-all-languages.py
+```
+
+### Language Features
+- Dynamic dropdown language switcher on every page
+- Browser language detection with localStorage preference
+- Language selection page showing all available languages
+- RTL (Right-to-Left) support for Arabic, Hebrew, Urdu, etc.
+- Automatic URL routing with language prefixes
+
+### Adding Translations
+
+**Option 1: Automatic Translation (Recommended)**
+```bash
+# Set up API credentials
+export OPENAI_API_KEY='your-api-key'
+export OPENAI_BASE_URL='https://api.openai.com/v1'  # Optional
+export OPENAI_API_MODEL='gpt-4o-mini'  # Optional
+
+# Translate all content to all enabled languages
+python scripts/translate-content.py
+
+# Or translate to specific language
+python scripts/translate-content.py --lang es
+```
+
+**Option 2: Manual Translation**
+```bash
+# Generate English translation templates from Portuguese content
+python scripts/create-translation-template.py
+
+# Update language metadata in files
+python scripts/update-lang-frontmatter.py pt docs/pt/
+python scripts/update-lang-frontmatter.py en docs/en/
+```
+
+See `docs/TRANSLATION_API.md` for automatic translation setup.
+
+### Supported Languages Include:
+🌍 **Major Languages:** English, Spanish, French, German, Italian, Portuguese  
+🌏 **Asian:** Chinese, Japanese, Korean, Hindi, Thai, Vietnamese  
+🌍 **Middle Eastern:** Arabic, Hebrew, Persian, Urdu, Turkish  
+🌍 **African:** Swahili, Zulu, Xhosa, Amharic, Hausa  
+🌍 **Regional:** Catalan, Basque, Galician, Welsh, Irish  
+🌍 **And 150+ more languages!**
+
+See `docs/MULTILANGUAGE.md` for complete documentation.

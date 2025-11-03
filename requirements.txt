@@ -1,5 +1,6 @@
 # Python dependencies for automation scripts
 notion-client>=2.2.1
+requests>=2.31.0
 
 # Optional: for data visualization
 # matplotlib>=3.7.0

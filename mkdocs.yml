@@ -1,6 +1,11 @@
-site_name: DarkHuggy NeuroBlog
-site_description: My journey from ENEM preparation to computational neuroscience research at UFABC
-site_url: https://darkhuggy.github.io/ufabc-neuroscience-roadmap
+# Multi-language MkDocs configuration
+# For Portuguese version: mkdocs serve --config-file mkdocs-pt.yml
+# For English version: mkdocs serve --config-file mkdocs-en.yml
+
+# Default to Portuguese
+site_name: Cleiton Moura Loura NeuroBlog
+site_description: Minha jornada desde a preparação para o ENEM até a pesquisa em neurociência computacional na UFABC
+site_url: https://clouraen.github.io/ufabc-neuroscience-roadmap
 
 theme:
   name: material
@@ -24,23 +29,24 @@ theme:
     - search.suggest
     - search.highlight
     - toc.integrate
+  language: pt
 
 nav:
-  - Home: index.md
+  - Home: pt/index.md
   - ENEM 2026:
-    - enem2026/index.md
-    - enem2026/week-01.md
-    - enem2026/week-02.md
+    - pt/enem2026/index.md
+    - pt/enem2026/week-01.md
+    - pt/enem2026/week-02.md
   - Neuroscience:
-    - neuroscience/index.md
-    - neuroscience/coursera-computational-neuroscience.md
-    - neuroscience/neuromatch-notes.md
-    - neuroscience/open-source-projects.md
+    - pt/neuroscience/index.md
+    - pt/neuroscience/coursera-computational-neuroscience.md
+    - pt/neuroscience/neuromatch-notes.md
+    - pt/neuroscience/open-source-projects.md
   - Blog:
-    - blog/index.md
-    - blog/pibic-dream.md
-    - blog/fapesp-path.md
-    - blog/mestrado-vision.md
+    - pt/blog/index.md
+    - pt/blog/pibic-dream.md
+    - pt/blog/fapesp-path.md
+    - pt/blog/mestrado-vision.md
 
 markdown_extensions:
   - pymdownx.superfences
@@ -49,3 +55,4 @@ markdown_extensions:
   - attr_list
   - md_in_html
 
+# For multi-language, consider using mkdocs-material i18n plugin or separate configs

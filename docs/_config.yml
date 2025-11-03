@@ -1,16 +1,30 @@
-title: "DarkHuggy NeuroBlog"
+title: "Cleiton Moura Loura NeuroBlog"
 description: "My journey from ENEM preparation to computational neuroscience research at UFABC"
 theme: jekyll-theme-cayman
 markdown: kramdown
 baseurl: ""
-url: "https://darkhuggy.github.io"
+url: "https://clouraen.github.io"
+
+# Multi-language support
+languages: ["pt", "en"]
+default_lang: "pt"
+exclude_from_localization: ["assets", "images", "css", "js", "_includes"]
+
+# Language-specific titles
+titles:
+  pt:
+    title: "NeuroBlog Cleiton Moura Loura"
+    description: "Minha jornada desde a preparação para o ENEM até a pesquisa em neurociência computacional na UFABC"
+  en:
+    title: "Cleiton Moura Loura NeuroBlog"
+    description: "My journey from ENEM preparation to computational neuroscience research at UFABC"
 
 # Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# Navigation
+# Navigation (will be overridden by language-specific navigation)
 navigation:
   - title: Home
     url: /
