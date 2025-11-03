@@ -1,0 +1,443 @@
+/*
+ * CYBERPUNK 2077 + BLADE RUNNER 2049 THEME
+ * Neural Nexus Custom Stylesheet
+ */
+
+:root {
+  /* Cyberpunk Neon Colors */
+  --cyber-cyan: #00f3ff;
+  --cyber-magenta: #ff006e;
+  --cyber-yellow: #ffbe0b;
+  --cyber-purple: #8338ec;
+  --cyber-pink: #ff006e;
+  --cyber-blue: #3a86ff;
+  
+  /* Blade Runner Ambience */
+  --blade-orange: #fb5607;
+  --blade-red: #d00000;
+  --blade-gold: #ffba08;
+  
+  /* Dark Background Layers */
+  --bg-darkest: #0a0e27;
+  --bg-dark: #0f1419;
+  --bg-medium: #1a1f2e;
+  --bg-light: #252a3a;
+  
+  /* Text Colors */
+  --text-neon: #00f3ff;
+  --text-bright: #ffffff;
+  --text-muted: #8892b0;
+  --text-dim: #495670;
+  
+  /* Accent Glows */
+  --glow-cyan: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+  --glow-magenta: 0 0 10px rgba(255, 0, 110, 0.5), 0 0 20px rgba(255, 0, 110, 0.3);
+  --glow-yellow: 0 0 10px rgba(255, 190, 11, 0.5), 0 0 20px rgba(255, 190, 11, 0.3);
+}
+
+/* Dark Theme (Cyberpunk Night) */
+[data-md-color-scheme="cyberpunk"] {
+  --md-primary-fg-color: var(--bg-darkest);
+  --md-primary-fg-color--light: var(--bg-dark);
+  --md-primary-fg-color--dark: var(--bg-darkest);
+  --md-primary-bg-color: var(--text-bright);
+  --md-primary-bg-color--light: var(--text-neon);
+  
+  --md-accent-fg-color: var(--cyber-cyan);
+  --md-accent-fg-color--transparent: rgba(0, 243, 255, 0.1);
+  --md-accent-bg-color: var(--bg-medium);
+  
+  --md-default-bg-color: var(--bg-darkest);
+  --md-default-fg-color: var(--text-bright);
+  --md-default-fg-color--light: var(--text-muted);
+  --md-default-fg-color--lighter: var(--text-dim);
+  --md-default-fg-color--lightest: var(--bg-light);
+  
+  --md-code-bg-color: var(--bg-dark);
+  --md-code-fg-color: var(--cyber-cyan);
+  
+  --md-typeset-a-color: var(--cyber-cyan);
+}
+
+/* Light Theme (Blade Runner Fog) */
+[data-md-color-scheme="bladerunner"] {
+  --md-primary-fg-color: #e0e0e0;
+  --md-primary-bg-color: #1a1a1a;
+  --md-accent-fg-color: var(--cyber-purple);
+  --md-default-bg-color: #f5f5f5;
+  --md-default-fg-color: #1a1a1a;
+  --md-code-bg-color: #e8e8e8;
+  --md-code-fg-color: var(--cyber-purple);
+  --md-typeset-a-color: var(--cyber-purple);
+}
+
+/* Body Background - Cyberpunk Grid */
+body {
+  background: var(--bg-darkest);
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+}
+
+/* Header - Neon Glow */
+.md-header {
+  background: linear-gradient(135deg, var(--bg-darkest) 0%, var(--bg-dark) 100%);
+  border-bottom: 2px solid var(--cyber-cyan);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+}
+
+.md-header__title {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--cyber-cyan) !important;
+  text-shadow: var(--glow-cyan);
+}
+
+/* Navigation Tabs - Cyberpunk Style */
+.md-tabs {
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--cyber-cyan);
+}
+
+.md-tabs__link {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted) !important;
+  transition: all 0.3s ease;
+}
+
+.md-tabs__link:hover {
+  color: var(--cyber-cyan) !important;
+  text-shadow: var(--glow-cyan);
+}
+
+.md-tabs__link--active {
+  color: var(--cyber-cyan) !important;
+  border-bottom: 2px solid var(--cyber-cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+/* Sidebar - Terminal Style */
+.md-sidebar {
+  background: var(--bg-dark);
+  border-right: 1px solid var(--cyber-cyan);
+}
+
+.md-nav__title {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--cyber-yellow);
+  background: var(--bg-medium);
+  border-left: 3px solid var(--cyber-yellow);
+  padding-left: 1rem;
+}
+
+.md-nav__link {
+  font-family: 'Roboto Mono', monospace;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.md-nav__link:hover {
+  color: var(--cyber-cyan);
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--cyber-cyan);
+}
+
+.md-nav__link--active {
+  color: var(--cyber-cyan) !important;
+  font-weight: 600;
+  border-left: 3px solid var(--cyber-cyan);
+  background: rgba(0, 243, 255, 0.05);
+}
+
+/* Content Area */
+.md-content {
+  background: var(--bg-darkest);
+}
+
+.md-content__inner {
+  padding: 2rem;
+}
+
+/* Typography - Cyberpunk Style */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h1 {
+  color: var(--cyber-cyan);
+  text-shadow: var(--glow-cyan);
+  border-bottom: 3px solid var(--cyber-cyan);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  color: var(--cyber-magenta);
+  text-shadow: var(--glow-magenta);
+  border-left: 5px solid var(--cyber-magenta);
+  padding-left: 1rem;
+}
+
+h3 {
+  color: var(--cyber-yellow);
+  text-shadow: var(--glow-yellow);
+}
+
+h4, h5, h6 {
+  color: var(--text-neon);
+}
+
+/* Links - Neon Glow */
+a {
+  color: var(--cyber-cyan);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--cyber-magenta);
+  text-shadow: var(--glow-magenta);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--cyber-cyan);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+  box-shadow: var(--glow-cyan);
+}
+
+/* Code Blocks - Terminal Style */
+code {
+  background: var(--bg-dark) !important;
+  color: var(--cyber-cyan) !important;
+  border: 1px solid var(--cyber-cyan);
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.9em;
+  box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+.md-typeset pre {
+  background: var(--bg-dark) !important;
+  border: 1px solid var(--cyber-cyan);
+  border-left: 4px solid var(--cyber-cyan);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.md-typeset pre > code {
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+
+/* Buttons - Cyberpunk Style */
+.md-button {
+  background: var(--bg-medium);
+  color: var(--cyber-cyan);
+  border: 2px solid var(--cyber-cyan);
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.md-button:hover {
+  background: var(--cyber-cyan);
+  color: var(--bg-darkest);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+.md-button--primary {
+  background: var(--cyber-cyan);
+  color: var(--bg-darkest);
+  box-shadow: var(--glow-cyan);
+}
+
+.md-button--primary:hover {
+  background: var(--cyber-magenta);
+  border-color: var(--cyber-magenta);
+  box-shadow: var(--glow-magenta);
+}
+
+/* Tables - Data Grid Style */
+table {
+  border: 2px solid var(--cyber-cyan);
+  border-collapse: collapse;
+  width: 100%;
+  background: var(--bg-dark);
+}
+
+thead {
+  background: var(--bg-medium);
+  border-bottom: 2px solid var(--cyber-cyan);
+}
+
+th {
+  color: var(--cyber-yellow);
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1rem;
+  border: 1px solid var(--cyber-cyan);
+}
+
+td {
+  color: var(--text-bright);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--text-dim);
+}
+
+tr:hover {
+  background: rgba(0, 243, 255, 0.05);
+}
+
+/* Admonitions - Warning Panels */
+.md-typeset .admonition {
+  border-left: 4px solid var(--cyber-cyan);
+  background: var(--bg-dark);
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.md-typeset .admonition-title {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--bg-medium);
+}
+
+.md-typeset .note {
+  border-left-color: var(--cyber-cyan);
+}
+
+.md-typeset .warning {
+  border-left-color: var(--cyber-yellow);
+}
+
+.md-typeset .danger {
+  border-left-color: var(--cyber-magenta);
+}
+
+/* Search Bar - Cyberpunk Input */
+.md-search__input {
+  background: var(--bg-dark);
+  border: 2px solid var(--cyber-cyan);
+  color: var(--text-bright);
+  border-radius: 4px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.md-search__input::placeholder {
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.md-search__input:focus {
+  box-shadow: var(--glow-cyan);
+  border-color: var(--cyber-magenta);
+}
+
+/* Footer - System Info */
+.md-footer {
+  background: var(--bg-dark);
+  border-top: 2px solid var(--cyber-cyan);
+  color: var(--text-muted);
+}
+
+.md-footer-meta {
+  background: var(--bg-darkest);
+}
+
+/* Scrollbar - Neon Style */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+  border: 1px solid var(--cyber-cyan);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyber-cyan);
+  border-radius: 6px;
+  box-shadow: var(--glow-cyan);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-magenta);
+  box-shadow: var(--glow-magenta);
+}
+
+/* Selection */
+::selection {
+  background: var(--cyber-cyan);
+  color: var(--bg-darkest);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--cyber-cyan);
+  color: var(--bg-darkest);
+  text-shadow: none;
+}
+
+/* Announcement Bar */
+.md-banner {
+  background: linear-gradient(90deg, var(--cyber-cyan) 0%, var(--cyber-magenta) 100%);
+  color: var(--bg-darkest);
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.7);
+  }
+}
+
+/* Loading Indicator */
+.md-progress {
+  background: var(--cyber-cyan);
+  box-shadow: var(--glow-cyan);
+}

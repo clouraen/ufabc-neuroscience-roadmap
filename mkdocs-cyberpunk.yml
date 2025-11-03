@@ -1,0 +1,238 @@
+site_name: "⚡ NEURAL.NEXUS ///"
+site_description: "CYBERNETIC JOURNEY // ENEM.2026 → UFABC → COMPUTATIONAL.NEUROSCIENCE → ∞"
+site_url: https://clouraen.github.io/ufabc-neuroscience-roadmap
+site_author: Cleiton Moura Loura
+
+# Repository
+repo_name: clouraen/ufabc-neuroscience-roadmap
+repo_url: https://github.com/clouraen/ufabc-neuroscience-roadmap
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  language: en
+  
+  # Cyberpunk Color Palette
+  palette:
+    # Dark Mode (Primary - Cyberpunk Night)
+    - media: "(prefers-color-scheme: dark)"
+      scheme: cyberpunk
+      primary: custom
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    
+    # Light Mode (Blade Runner Fog)
+    - media: "(prefers-color-scheme: light)"
+      scheme: bladerunner
+      primary: custom
+      accent: deep-purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  
+  # Cyberpunk Features
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - header.autohide
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    - toc.integrate
+  
+  # Cyberpunk Icons
+  icon:
+    logo: material/brain
+    repo: fontawesome/brands/github
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/zap-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+  
+  # Font Stack
+  font:
+    text: Roboto Mono
+    code: Fira Code
+
+# Navigation - Cyberpunk Structure
+nav:
+  - ⚡ MAINFRAME:
+      - index.md
+      - About System: about.md
+  
+  - 🧠 NEURAL.PROTOCOLS:
+      - neuroscience/index.md
+      - Coursera Archives: neuroscience/coursera-computational-neuroscience.md
+      - Neuromatch Logs: neuroscience/neuromatch-notes.md
+      - OpenSource Ops: neuroscience/open-source-projects.md
+      - Research Database: neuroscience/research-database.md
+  
+  - 📡 ENEM.MATRIX //2026:
+      - enem2026/index.md
+      - Week 01 Log: enem2026/week-01.md
+      - Week 02 Log: enem2026/week-02.md
+      - Progress Dashboard: enem2026/progress.md
+  
+  - 💾 MEMORY.LOGS:
+      - blog/index.md
+      - PIBIC Dream Protocol: blog/pibic-dream.md
+      - FAPESP Route Map: blog/fapesp-path.md
+      - Mestrado Vision: blog/mestrado-vision.md
+      - Daily Journal: blog/daily-journal.md
+  
+  - 🔧 DEV.TEMPLATES:
+      - templates/index.md
+      - Weekly Template: templates/weekly-template.md
+      - Monthly Summary: templates/monthly-summary.md
+      - Research Log: templates/research-log.md
+  
+  - 🌐 LANGUAGE.MATRIX:
+      - languages/index.md
+
+# Markdown Extensions - Enhanced
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "🔗"
+      permalink_title: Anchor link to this section
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  
+  # PyMdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: clouraen
+      repo: ufabc-neuroscience-roadmap
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - tags:
+      tags_file: tags.md
+
+# Extra Configuration
+extra:
+  # Social Links - Cyberpunk Style
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/clouraen
+      name: GitHub Profile
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/cleiton-moura-loura
+      name: LinkedIn
+    - icon: fontawesome/solid/brain
+      link: https://clouraen.github.io/ufabc-neuroscience-roadmap
+      name: Neural Nexus
+  
+  # Analytics (optional)
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  
+  # Announcement Bar
+  announcement: |
+    ⚡ SYSTEM STATUS: ACTIVE // ENEM 2026 PROTOCOL RUNNING // NEUROSCIENCE.NEXUS ONLINE
+  
+  # Version
+  version:
+    provider: mike
+
+# Extra CSS/JS
+extra_css:
+  - stylesheets/cyberpunk.css
+  - stylesheets/glitch.css
+  - stylesheets/neon.css
+
+extra_javascript:
+  - javascripts/cyberpunk.js
+  - javascripts/terminal.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Copyright
+copyright: |
+  &copy; 2024-2026 <a href="https://github.com/clouraen" target="_blank" rel="noopener">Cleiton Moura Loura</a> // 
+  <strong>NEURAL.NEXUS</strong> // All Rights Reserved

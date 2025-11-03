@@ -1,0 +1,136 @@
+name: 🚀 Deploy Cyberpunk Neural Nexus
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-${{ github.ref }}"
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: '3.11'
+  MKDOCS_VERSION: '1.5.3'
+
+jobs:
+  build:
+    name: ⚡ Build Cyberpunk Site
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git-revision-date-localized
+      
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: 📦 Install Dependencies
+        run: |
+          echo "⚡ Installing MkDocs and dependencies..."
+          pip install --upgrade pip
+          pip install mkdocs-material
+          pip install mkdocs-minify-plugin
+          pip install mkdocs-git-revision-date-localized-plugin
+          pip install pymdown-extensions
+          pip install mkdocs-awesome-pages-plugin
+          pip install -r requirements.txt || echo "No additional requirements"
+      
+      - name: 🎨 Verify Cyberpunk Theme Files
+        run: |
+          echo "🔍 Checking cyberpunk theme files..."
+          ls -la docs/stylesheets/ || echo "⚠️ Stylesheets directory not found"
+          ls -la docs/javascripts/ || echo "⚠️ Javascripts directory not found"
+          echo "✅ Theme verification complete"
+      
+      - name: 🏗️ Build MkDocs Site
+        run: |
+          echo "🚀 Building Neural Nexus with Cyberpunk theme..."
+          if [ -f "mkdocs-cyberpunk.yml" ]; then
+            mkdocs build --config-file mkdocs-cyberpunk.yml --verbose --strict
+          else
+            mkdocs build --verbose --strict
+          fi
+          echo "✅ Build complete!"
+      
+      - name: 🔧 Post-Build Optimizations
+        run: |
+          echo "⚡ Applying cyberpunk optimizations..."
+          # Add custom meta tags for cyberpunk theme
+          find site -name "*.html" -type f -exec sed -i 's/<head>/<head>\n<meta name="theme-color" content="#00f3ff">\n<meta name="description" content="Cyberpunk Neural Nexus - ENEM 2026 → UFABC → Computational Neuroscience">/g' {} +
+          echo "✅ Optimizations applied"
+      
+      - name: 📊 Site Statistics
+        run: |
+          echo "📊 Site Build Statistics:"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "Total files: $(find site -type f | wc -l)"
+          echo "HTML files: $(find site -name '*.html' | wc -l)"
+          echo "CSS files: $(find site -name '*.css' | wc -l)"
+          echo "JS files: $(find site -name '*.js' | wc -l)"
+          echo "Site size: $(du -sh site | cut -f1)"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+      
+      - name: 📤 Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+          retention-days: 7
+  
+  deploy:
+    name: 🌐 Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    
+    # Only deploy on push to main branch
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      
+      - name: ✅ Deployment Success
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "⚡ NEURAL.NEXUS DEPLOYMENT SUCCESS ///"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "🌐 Site URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "🎨 Theme: Cyberpunk 2077 + Blade Runner"
+          echo "📅 Deployed: $(date)"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  
+  notify:
+    name: 📢 Deployment Notification
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: 📢 Status Report
+        run: |
+          if [ "${{ needs.deploy.result }}" == "success" ]; then
+            echo "✅ Deployment successful!"
+            echo "⚡ Neural Nexus is now live with Cyberpunk theme!"
+          else
+            echo "❌ Deployment failed"
+            echo "🔧 Please check the logs above"
+          fi

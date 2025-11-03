@@ -1,17 +1,15 @@
 title: "Cleiton Moura Loura NeuroBlog"
 description: "My journey from ENEM preparation to computational neuroscience research at UFABC"
 theme: jekyll-theme-cayman
-markdown: kramdown
 baseurl: "/ufabc-neuroscience-roadmap"
 url: "https://clouraen.github.io"
-
 # Multi-language support
 languages: ["pt", "en"]
 default_lang: "pt"
-exclude_from_localization: ["assets", "images", "css", "js", "_includes"]
-
-# Language-specific titles
-titles:
+exclude_from_localization: ["as# ... existing code ...
+baseurl: "/ufabc-neuroscience-roadmap"
+url: "https://clouraen.github.io"
+=titles:
   pt:
     title: "NeuroBlog Cleiton Moura Loura"
     description: "Minha jornada desde a preparação para o ENEM até a pesquisa em neurociência computacional na UFABC"

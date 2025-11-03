@@ -1,0 +1,354 @@
+/*
+ * GLITCH EFFECTS - Cyberpunk 2077 Style
+ * Neural Nexus Glitch Animations
+ */
+
+/* Glitch Animation Keyframes */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-text {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 110, 0.75),
+                -0.05em -0.025em 0 rgba(0, 243, 255, 0.75),
+                -0.025em 0.05em 0 rgba(255, 190, 11, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 110, 0.75),
+                -0.05em -0.025em 0 rgba(0, 243, 255, 0.75),
+                -0.025em 0.05em 0 rgba(255, 190, 11, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 110, 0.75),
+                0.025em 0.025em 0 rgba(0, 243, 255, 0.75),
+                -0.05em -0.05em 0 rgba(255, 190, 11, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 110, 0.75),
+                0.025em 0.025em 0 rgba(0, 243, 255, 0.75),
+                -0.05em -0.05em 0 rgba(255, 190, 11, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 110, 0.75),
+                0.05em 0 0 rgba(0, 243, 255, 0.75),
+                0 -0.05em 0 rgba(255, 190, 11, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 110, 0.75),
+                0.05em 0 0 rgba(0, 243, 255, 0.75),
+                0 -0.05em 0 rgba(255, 190, 11, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(255, 0, 110, 0.75),
+                -0.025em -0.025em 0 rgba(0, 243, 255, 0.75),
+                -0.025em -0.05em 0 rgba(255, 190, 11, 0.75);
+  }
+}
+
+@keyframes glitch-scan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 0 0 4px #fff,
+                 0 0 10px #fff,
+                 0 0 20px var(--cyber-cyan),
+                 0 0 30px var(--cyber-cyan),
+                 0 0 40px var(--cyber-cyan);
+  }
+  50% {
+    text-shadow: 0 0 2px #fff,
+                 0 0 5px #fff,
+                 0 0 10px var(--cyber-cyan),
+                 0 0 15px var(--cyber-cyan),
+                 0 0 20px var(--cyber-cyan);
+  }
+}
+
+/* Apply Glitch to Headers on Hover */
+h1:hover {
+  animation: glitch-text 0.3s infinite;
+}
+
+h2:hover {
+  animation: glitch-text 0.5s infinite;
+}
+
+/* Glitch Button */
+.glitch-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch-button::before,
+.glitch-button::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-button::before {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  color: var(--cyber-cyan);
+  z-index: -1;
+}
+
+.glitch-button::after {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse infinite;
+  color: var(--cyber-magenta);
+  z-index: -2;
+}
+
+/* Scanline Effect */
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1000;
+  animation: glitch-scan 10s linear infinite;
+}
+
+/* CRT Screen Effect */
+.crt-effect {
+  position: relative;
+}
+
+.crt-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 243, 255, 0.03),
+    rgba(0, 243, 255, 0.03) 1px,
+    rgba(255, 0, 110, 0.02) 1px,
+    rgba(255, 0, 110, 0.02) 2px
+  );
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+/* Neon Text Class */
+.neon-text {
+  animation: neon-pulse 1.5s ease-in-out infinite alternate;
+}
+
+/* Terminal Cursor */
+.terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background: var(--cyber-cyan);
+  margin-left: 5px;
+  animation: blink 1s step-end infinite;
+  box-shadow: var(--glow-cyan);
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Data Stream Effect */
+@keyframes data-stream {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.data-stream {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.data-stream span {
+  position: absolute;
+  top: -100%;
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  color: var(--cyber-cyan);
+  opacity: 0.3;
+  animation: data-stream 10s linear infinite;
+}
+
+/* Hologram Effect */
+.hologram {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 243, 255, 0.1) 0%,
+    rgba(0, 243, 255, 0.05) 50%,
+    rgba(0, 243, 255, 0.1) 100%
+  );
+  border: 1px solid var(--cyber-cyan);
+  box-shadow: 
+    inset 0 0 20px rgba(0, 243, 255, 0.2),
+    0 0 20px rgba(0, 243, 255, 0.3);
+  animation: hologram-flicker 5s ease-in-out infinite;
+}
+
+@keyframes hologram-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Digital Noise */
+@keyframes digital-noise {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -5% -10%;
+  }
+  20% {
+    background-position: -15% 5%;
+  }
+  30% {
+    background-position: 7% -25%;
+  }
+  40% {
+    background-position: 20% 25%;
+  }
+  50% {
+    background-position: -25% 10%;
+  }
+  60% {
+    background-position: 15% 5%;
+  }
+  70% {
+    background-position: 0% 15%;
+  }
+  80% {
+    background-position: 25% 35%;
+  }
+  90% {
+    background-position: -10% 10%;
+  }
+}
+
+.digital-noise {
+  position: relative;
+}
+
+.digital-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.1;
+  animation: digital-noise 8s steps(10) infinite;
+  pointer-events: none;
+}
+
+/* RGB Split Effect */
+.rgb-split {
+  position: relative;
+}
+
+.rgb-split::before,
+.rgb-split::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  mix-blend-mode: screen;
+}
+
+.rgb-split::before {
+  color: var(--cyber-cyan);
+  transform: translate(-2px, 0);
+  animation: glitch 2s infinite;
+}
+
+.rgb-split::after {
+  color: var(--cyber-magenta);
+  transform: translate(2px, 0);
+  animation: glitch 3s infinite reverse;
+}
