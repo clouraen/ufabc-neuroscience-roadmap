@@ -1,0 +1,51 @@
+site_name: DarkHuggy NeuroBlog
+site_description: My journey from ENEM preparation to computational neuroscience research at UFABC
+site_url: https://darkhuggy.github.io/ufabc-neuroscience-roadmap
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.expand
+    - content.code.copy
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - toc.integrate
+
+nav:
+  - Home: index.md
+  - ENEM 2026:
+    - enem2026/index.md
+    - enem2026/week-01.md
+    - enem2026/week-02.md
+  - Neuroscience:
+    - neuroscience/index.md
+    - neuroscience/coursera-computational-neuroscience.md
+    - neuroscience/neuromatch-notes.md
+    - neuroscience/open-source-projects.md
+  - Blog:
+    - blog/index.md
+    - blog/pibic-dream.md
+    - blog/fapesp-path.md
+    - blog/mestrado-vision.md
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - tables
+  - attr_list
+  - md_in_html
+

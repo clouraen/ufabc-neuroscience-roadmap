@@ -1,0 +1,7 @@
+# Python dependencies for automation scripts
+notion-client>=2.2.1
+
+# Optional: for data visualization
+# matplotlib>=3.7.0
+# pandas>=2.0.0
+

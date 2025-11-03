@@ -1,0 +1,23 @@
+title: "DarkHuggy NeuroBlog"
+description: "My journey from ENEM preparation to computational neuroscience research at UFABC"
+theme: jekyll-theme-cayman
+markdown: kramdown
+baseurl: ""
+url: "https://darkhuggy.github.io"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: ENEM 2026
+    url: /enem2026/
+  - title: Neuroscience
+    url: /neuroscience/
+  - title: Blog
+    url: /blog/
+

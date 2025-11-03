@@ -1,0 +1,57 @@
+{
+  "current_phase": "Phase 1: Foundations (2024-2025)",
+  "enem_progress": {
+    "math": {
+      "hours": 0,
+      "improvement": "0%",
+      "last_updated": null,
+      "notes": ""
+    },
+    "biology": {
+      "hours": 0,
+      "improvement": "0%",
+      "last_updated": null,
+      "notes": ""
+    },
+    "portuguese": {
+      "hours": 0,
+      "improvement": "0%",
+      "last_updated": null,
+      "notes": ""
+    },
+    "humanities": {
+      "hours": 0,
+      "improvement": "0%",
+      "last_updated": null,
+      "notes": ""
+    },
+    "essay": {
+      "count": 0,
+      "average_score": 0,
+      "last_updated": null,
+      "notes": ""
+    }
+  },
+  "neuroscience_progress": {
+    "courses_completed": [],
+    "courses_in_progress": [],
+    "open_source_contributions": [],
+    "projects": []
+  },
+  "milestones": {
+    "enem_2026": {
+      "status": "planned",
+      "date": "2026-11"
+    },
+    "ufabc_admission": {
+      "status": "planned",
+      "date": null
+    },
+    "pibic": {
+      "status": "planned",
+      "date": null
+    }
+  },
+  "last_updated": null
+}
+
