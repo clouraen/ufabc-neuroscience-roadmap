@@ -1,0 +1,36 @@
+{
+  "phases": {
+    "fundamentos": {
+      "duration_days": 117,
+      "start_date": "2025-11-03",
+      "end_date": "2026-02-28"
+    },
+    "aprofundamento": {
+      "duration_days": 122,
+      "start_date": "2026-03-01",
+      "end_date": "2026-06-30"
+    },
+    "revisao": {
+      "duration_days": 123,
+      "start_date": "2026-07-01",
+      "end_date": "2026-10-31"
+    }
+  },
+  "weekly_pattern": {
+    "Monday": "New concepts introduction, week planning",
+    "Tuesday": "Deep work on core mathematical and scientific concepts",
+    "Wednesday": "Language and humanities focus",
+    "Thursday": "Integration and application practice",
+    "Friday": "Essay writing and interdisciplinary connections",
+    "Saturday": "Review and problem-solving",
+    "Sunday": "Lighter load, reflection, weekly assessment"
+  },
+  "time_allocation": {
+    "portuguese": 1.5,
+    "mathematics": 2.0,
+    "natural_sciences": 1.5,
+    "humanities": 1.5,
+    "essay_writing": 1.0,
+    "neuroscience": 0.5
+  }
+}
