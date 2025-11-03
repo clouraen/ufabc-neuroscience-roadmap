@@ -213,4 +213,3 @@ You can now:
 2. Copy this file as your main `README.md`  
 3. Add `/docs` templates and push  
 4. Enable **GitHub Pages** → your live NeuroBlog will appear automatically 🌱  
-
